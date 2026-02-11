@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio Wireframe</title>
+    <style>
+      :root {
+        --ink: #222;
+        --line: #777;
+        --bg: #fff;
+        --panel: #f3f3f3;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.4;
+      }
+
+      /* Page width similar to Desktop 1440 wireframe */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      /* Generic wireframe look */
+      .wf-box {
+        border: 2px solid var(--line);
+        background: #fff;
+      }
+
+      .wf-fill {
+        background: var(--panel);
+      }
+
+      .wf-label {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #444;
+      }
+
+      /* “Image placeholder” with X */
+      /* “Image placeholder” with clean centered X */
+.wf-image {
+  border: 2px solid var(--line);
+  background:
+    linear-gradient(45deg,
+      transparent calc(50% - 1px),
+      var(--line) calc(50% - 1px),
+      var(--line) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    ),
+    linear-gradient(-45deg,
+      transparent calc(50% - 1px),
+      var(--line) calc(50% - 1px),
+      var(--line) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    ),
+    var(--panel);
+  display: grid;
+  place-items: center;
+  color: #444;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* IMPORTANT: remove the old pseudo-elements */
+.wf-image::before,
+.wf-image::after {
+  content: none;
+}
+
+
+      /* “Text lines” look */
+      .wf-lines {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .wf-lines li {
+        height: 10px;
+        border: 2px solid var(--line);
+        background: #fff;
+      }
+
+      .wf-lines li.short {
+        width: 60%;
+      }
+
+      .wf-lines li.med {
+        width: 80%;
+      }
+
+      /* Layout */
+      header {
+        border-bottom: 2px solid var(--line);
+        background: #fff;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 0;
+      }
+
+      .logo {
+        width: 120px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+      }
+
+      nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .nav-pill {
+        padding: 10px 14px;
+        border: 2px solid var(--line);
+        background: #fff;
+        text-decoration: none;
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 24px;
+        padding: 24px 0 32px;
+      }
+
+      .hero-img {
+        height: 340px;
+      }
+
+      .hero-copy {
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .wf-heading {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        font-weight: 800;
+      }
+
+      .wf-h2 {
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 12px;
+        font-weight: 800;
+        margin: 0 0 16px;
+      }
+
+      .cta {
+        width: 180px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+      }
+
+      main {
+        padding: 34px 0;
+      }
+
+      section {
+        padding: 24px 0;
+        border-bottom: 2px solid #ddd;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .photo {
+        height: 220px;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .project-card {
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .project-img {
+        height: 180px;
+      }
+
+      .project-title {
+        height: 26px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        font-weight: 800;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .skill-card {
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+      }
+
+      footer {
+        padding: 24px 0 40px;
+      }
+
+      .social {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 12px 0 16px;
+      }
+
+      .social a {
+        width: 120px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border: 2px solid var(--line);
+        text-decoration: none;
+        color: var(--ink);
+        font-weight: 800;
+        background: #fff;
+      }
+
+      .copyright {
+        height: 18px;
+        max-width: 420px;
+      }
+
+      /* Responsive: stack on smaller screens */
+      @media (max-width: 900px) {
+        .hero,
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-img {
+          height: 260px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="topbar">
+          <div class="logo wf-box wf-fill"><span class="wf-label">Logo</span></div>
+
+          <nav aria-label="Primary">
+            <a class="nav-pill" href="#home">Home</a>
+            <a class="nav-pill" href="#portfolio">Portfolio</a>
+            <a class="nav-pill" href="#resume">Resume</a>
+          </nav>
+        </div>
+
+        <section class="hero" id="home" aria-label="Hero section">
+          <div class="wf-image hero-img">Hero Image</div>
+
+          <div class="hero-copy">
+            <div class="wf-box wf-heading wf-fill">H1</div>
+
+            <ul class="wf-lines" aria-label="Brief introduction lines">
+              <li class="med"></li>
+              <li></li>
+              <li class="short"></li>
+            </ul>
+
+            <div class="wf-box cta wf-fill">Button</div>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- About -->
+      <section aria-labelledby="about-heading">
+        <h2 id="about-heading" class="wf-box wf-h2 wf-fill">H2: About Me</h2>
+
+        <div class="about-grid">
+          <div>
+            <ul class="wf-lines" aria-label="About me paragraph lines">
+              <li></li>
+              <li class="med"></li>
+              <li></li>
+              <li class="med"></li>
+              <li class="short"></li>
+            </ul>
+          </div>
+
+          <figure style="margin: 0">
+            <div class="wf-image photo">Photo</div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="portfolio" aria-labelledby="projects-heading">
+        <h2 id="projects-heading" class="wf-box wf-h2 wf-fill">
+          H2: Portfolio Projects
+        </h2>
+
+        <div class="projects-grid">
+          <article class="wf-box project-card">
+            <div class="wf-image project-img">Project Image</div>
+            <div class="wf-box project-title wf-fill">Project 1 Title</div>
+          </article>
+
+          <article class="wf-box project-card">
+            <div class="wf-image project-img">Project Image</div>
+            <div class="wf-box project-title wf-fill">Project 2 Title</div>
+          </article>
+
+          <article class="wf-box project-card">
+            <div class="wf-image project-img">Project Image</div>
+            <div class="wf-box project-title wf-fill">Project 3 Title</div>
+          </article>
+
+          <article class="wf-box project-card">
+            <div class="wf-image project-img">Project Image</div>
+            <div class="wf-box project-title wf-fill">Project 4 Title</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section aria-labelledby="skills-heading">
+        <h2 id="skills-heading" class="wf-box wf-h2 wf-fill">H2: Skills</h2>
+
+        <div class="skills-grid">
+          <div class="wf-box skill-card">
+            <div class="icon wf-box wf-fill">ICON</div>
+            <ul class="wf-lines" aria-label="Skill 1 text lines">
+              <li class="med"></li>
+              <li class="short"></li>
+            </ul>
+          </div>
+
+          <div class="wf-box skill-card">
+            <div class="icon wf-box wf-fill">ICON</div>
+            <ul class="wf-lines" aria-label="Skill 2 text lines">
+              <li class="med"></li>
+              <li class="short"></li>
+            </ul>
+          </div>
+
+          <div class="wf-box skill-card">
+            <div class="icon wf-box wf-fill">ICON</div>
+            <ul class="wf-lines" aria-label="Skill 3 text lines">
+              <li class="med"></li>
+              <li class="short"></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="resume">
+      <div class="container">
+        <h2 class="wf-box wf-h2 wf-fill">H2: Connect</h2>
+
+        <div class="social" aria-label="Social media icons">
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Discord">Discord</a>
+          <a href="#" aria-label="Behance">Behance</a>
+        </div>
+
+        <div class="wf-box copyright wf-fill" aria-label="Copyright statement"></div>
+      </div>
+    </footer>
+  </body>
+</html>
